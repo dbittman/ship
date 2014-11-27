@@ -1,0 +1,8 @@
+ship - Package Shipper
+----------------------
+Provides the ability to ship packages to remote machines, acts as a normal
+package manager, and provides multiple install roots on the same computer.
+
+Designed for simplified userspace app management on the SeaOS operating
+system.
+

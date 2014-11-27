@@ -1,0 +1,26 @@
+ship - Packages Shipper
+
+A 'system' is an individual computer upon which actions can be done. A 'manifest' describes a list of
+packages. A 'package' is an archive of files, a 'hook' file, and a 'list' file. The hook file is a
+ruby script that executes upon package shipment which may execute aribtrary tasks. A 'list' file is
+a list of all possible files created by the package during shipment.
+
+A computer can define multiple 'systems', each given a unique identifier when created. One of them
+is default. This allows the creation of multiple install roots.
+
+Installing a package:
+	* lookup package name in repo manifest(s) to get a package object
+	* query target for system object
+	* send package object to system
+	* system receives package object and authenticates, validates
+	* system unpacks files, installs files, runs hook file
+	* system updates local installed manifest
+	* system returns OK.
+
+Client-server model. If target is 'local', skip the client-server model, pass directly.
+
+ship -s local +gcc
+ship -s 192.168.1.6 +gcc
+
+ship -s remote:1
+
