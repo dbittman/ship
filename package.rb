@@ -8,25 +8,25 @@ class Package
 		:filelist => nil,
 	}
 
-	def initialize(*args)
-		@data = if args.size == 0
-					DEFAULTS
-				else
-					args[0]
-				end
+	def initialize(data = DEFAULTS)
+		@data = data
 	end
 
 	def longname
-
+		"#{@data[:pname]}-#{@data[:version]}-#{@data[:revision]}-#{@data[:arch]}"
 	end
 
 	def dump
 		YAML::dump(@data)
 	end
 
+	def getdata
+		@data
+	end
+
 	# if we try to access anything that's in data, automatically
 	# return its value or assign to it
-	def method_missing(method, *args, &blokc)
+	def method_missing(method, *args, &block)
 		entry = method
 		/(.*)=$/.match(method) do |match|
 			# this is an assignment (got :symbol=)
@@ -48,9 +48,4 @@ class Package
 		end
 	end
 end
-
-p = Package.new
-puts p.pname
-p.pname = "test"
-puts p.pname
 
