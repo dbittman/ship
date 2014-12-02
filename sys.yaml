@@ -1,0 +1,5 @@
+---
+packages:
+  test:
+    :pname: test
+    :version: '4.2'

@@ -25,7 +25,7 @@ cmd = {
 }
 
 cmd2 = {
-	"command" => "querysystems",
+	"command" => "querysystem",
 	"system"  => "core"
 }
 
@@ -33,6 +33,17 @@ c.send_hash(cmd2)
 h = c.get_hash
 
 puts h
+
+p "getting package"
+
+sys = System.new("localhost-core.yml")
+sys.merge(h)
+pack = sys.get_package("gcc")
+puts pack.dump
+
+puts
+
+puts pack.resolve_location("localhost", sys)
 
 c.disconnect
 

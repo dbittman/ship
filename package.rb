@@ -12,7 +12,11 @@ class Package
 	def initialize(data = DEFAULTS)
 		@data = data
 	end
-
+	
+	def resolve_location(remote, system)
+		remote + "/" + system.relpath + "/" + @data[:location] + "/" + longname
+	end
+	
 	def longname
 		"#{@data[:pname]}-#{@data[:version]}-#{@data[:revision]}-#{@data[:arch]}"
 	end

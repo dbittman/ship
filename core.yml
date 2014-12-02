@@ -1,0 +1,15 @@
+system:
+    relpath: "/home/piranha/code/ship/core"
+packages:
+    gcc:
+        :pname: "gcc"
+        :version: "4.8"
+        :revision: "1"
+        :deps: "binutils"
+        :arch: "x86_64"
+        :location: ""
+        :filelist:
+            - test
+            - file
+            - another_file
+

@@ -21,7 +21,11 @@ class System
 			@database.write_field("system", method.to_s, args[0])
 		end
 	end
-	
+
+	def merge(hash)
+		@database.merge(hash)
+	end
+
 	def to_hash
 		{"system" => @database.read("system"), "packages" => @database.read("packages") }
 	end

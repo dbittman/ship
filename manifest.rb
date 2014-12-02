@@ -35,6 +35,14 @@ class Manifest
 		end
 	end
 	
+	def merge(hash)
+		@store.transaction do
+			hash.each do |key, value|
+				@store[key] = value
+			end
+		end
+	end
+
 	def read(category, name = nil)
 		@store.transaction(true) do
 			if name.nil? || @store[category].nil?
