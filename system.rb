@@ -21,6 +21,10 @@ class System
 			@database.write_field("system", method.to_s, args[0])
 		end
 	end
+	
+	def to_hash
+		{"system" => @database.read("system"), "packages" => @database.read("packages") }
+	end
 
 	def add_package(pack)
 		@database.write_field("packages", pack.pname, pack.getdata)
@@ -33,6 +37,10 @@ class System
 	def get_package(name)
 		hash = @database.read("packages", name)
 		hash.nil? ? nil : Package.new(hash)
+	end
+	
+	def install(package)
+		puts "installing package: #{package.longname}"
 	end
 
 end

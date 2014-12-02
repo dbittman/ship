@@ -6,6 +6,7 @@ class Package
 		:deps  => nil,
 		:arch  => nil,
 		:filelist => nil,
+		:location => nil,
 	}
 
 	def initialize(data = DEFAULTS)

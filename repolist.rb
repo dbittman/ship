@@ -13,7 +13,15 @@ class Repolist
 		end
 		nil
 	end
+
+	def get(name)
+		@database.read("systems", name)
+	end
 	
+	def list
+		{ "systems" => @database.read("systems").keys }
+	end
+
 	def add(name, filename)
 		@database.write_field("systems", name, filename)
 	end
